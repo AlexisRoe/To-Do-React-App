@@ -1,6 +1,7 @@
 export default function addToDo (todo) {
 
     let existingToDo = null;
+    console.log(todo);
 
     try {
         existingToDo = JSON.parse(localStorage.getItem("todo")) || [];
