@@ -4,7 +4,7 @@ import checkedToDo from "../utils/checked";
 import isChecked from "../utils/isChecked";
 import removeToDo from "../utils/remove";
 
-export default function OutputField({ todo }) {
+export default function OutputField({ todo, onRemove }) {
   return (
     <div>
       <input
@@ -16,7 +16,9 @@ export default function OutputField({ todo }) {
         }}
       />
       <label htmlFor="nameToDo">{todo}</label>
-      <button onClick={() => removeToDo(todo)}>remove</button>
+      <button onClick={() =>  {
+        removeToDo(todo);
+        onRemove(todo)}}>remove</button>
     </div>
   );
 }
