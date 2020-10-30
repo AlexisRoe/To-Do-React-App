@@ -1,16 +1,11 @@
 import "./InputField.css";
 import React from "react";
-import addToDo from "../utils/storage";
 
-export default function InputField() {
+
+export default function InputField(props) {
   return (
     <form
-      onSubmit={(todo) => {
-        todo.preventDefault();
-        // hier später ersetzen durch bessere Form!
-        addToDo(document.querySelector("#inputField").value);
-        document.querySelector("#inputField").value = "";
-      }}
+      {...props}
     >
       <input
         className="inputField"
