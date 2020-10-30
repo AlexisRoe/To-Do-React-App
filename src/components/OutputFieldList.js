@@ -3,7 +3,7 @@ import "./OutputFieldList.css";
 import OutputField from "./OutputField";
 
 export default function OutputFieldList({ toDoList }) {
-  document.querySelector("#inputField").value = "";
+  // document.querySelector("#inputField").value = "";
   return (
     <div className="OutputFieldList">
       {toDoList.map((todo) => (
