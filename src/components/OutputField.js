@@ -10,6 +10,7 @@ export default function OutputField({ todo, onRemove }) {
       <input
         type="checkbox"
         name="nameToDo"
+        className="inputField"
         defaultChecked={isChecked(todo)}
         onClick={() => {
           checkedToDo(todo);
