@@ -2,42 +2,47 @@ import './app.css';
 import React, { useState } from 'react';
 import InputField from './components/InputField';
 import OutputFieldList from './components/OutputFieldList';
+
 import addToDo from './utils/storage';
 import getData from './utils/getData';
+import removeFromStorage from "./utils/remove";
 
 function App() {
     const defaultList = getData('todo');
-    const [toDoList, setToDo] = useState(defaultList);
+    const [itemList, setItemList] = useState(defaultList);
     const [buildSwitch, setBuildSwitch] = useState(null);
 
     function handleRemove(todo) {
-        const newList = toDoList.filter((item) => item !== todo);
-        setToDo(newList);
+        const newList = itemList.filter((item) => item !== todo);
+        setItemList(newList);
     }
 
     function inputAnalyse(inputValue) {
         setBuildSwitch(null);
 
         if (/^clear/.test(inputValue)) {
-            setToDo([]);
+            setItemList([]);
         } else if (/^list todo/.test(inputValue)) {
-            setToDo(getData('todo'));
+            setItemList(getData('todo'));
         } else if (/^help/.test(inputValue)) {
             const help = [
                 '$ add text           = add new to-do item with value=text',
                 '$ list todo          = shows to-do list',
-                '$ check #number      = check item with #number',
-                '$ uncheck #number    = uncheck item with #number',
-                '$ complete #number   = delete item with #number',
-                '$ complete #number   = delete item with #number',
+                '$ check number      = check item with #number',
+                '$ uncheck number    = uncheck item with #number',
+                '$ complete number   = delete item with #number',
                 '$ clear              = clear console',
             ];
             setBuildSwitch("help")
-            setToDo(help);
+            setItemList(help);
         } else if (/^complete/.test(inputValue)) {
-            alert("conplete detetected");
+            const index = inputValue.match(/\d+/) -1;
+            if (index >= 0 && index < itemList.length){
+                removeFromStorage(itemList[index]);
+                handleRemove(itemList[index]);
+            }
         } else {
-            setToDo(addToDo(inputValue));
+            setItemList(addToDo(inputValue));
         }
     }
 
@@ -67,8 +72,8 @@ function App() {
                         event.target.input.value = '';
                     }}
                 />
-                {toDoList && (
-                    <OutputFieldList itemList={toDoList} onRemove={handleRemove} router={buildSwitch} />
+                {itemList && (
+                    <OutputFieldList itemList={itemList} onRemove={handleRemove} router={buildSwitch} />
                 )}
             </div>
         </main>
