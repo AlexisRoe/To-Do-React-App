@@ -1,0 +1,13 @@
+.inputContainer {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.inputContainer > span {
+    margin-right: 1rem;
+}
+
+.inputField{
+    margin-right: auto;
+}

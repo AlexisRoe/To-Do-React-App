@@ -3,12 +3,14 @@ import React from "react";
 
 export default function InputField(props) {
   return (
-    <form {...props}>
-      <input
+    <form className="inputContainer" {...props}>
+      <span>$ ..&gt;  </span><input
         className="inputField"
         type="text"
-        placeholder="Insert ToDo"
+        value=""
         id="inputField"
+        autoComplete="off"
+        autoFocus={true}
         required={true}
       ></input>
       <button type="submit" className="inputButton">

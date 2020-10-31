@@ -6,11 +6,10 @@ import removeToDo from "../utils/remove";
 
 export default function OutputField({ todo, onRemove }) {
   return (
-    <div>
+    <div className="outputContainer">
       <input
         type="checkbox"
         name="nameToDo"
-        className="inputField"
         defaultChecked={isChecked(todo)}
         onClick={() => {
           checkedToDo(todo);

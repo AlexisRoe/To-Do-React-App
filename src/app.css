@@ -1,2 +1,50 @@
-.app {
+.main {
+    width: 600px;
+    min-height: 500px;
+    margin: 0 auto;
+    background-color: rgb(41, 41, 41);
+    border: 10px solid rgb(124, 124, 124);
+    border-top: 0px;
+    box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.4), -1px -1px 1px 0px rgba(255, 255, 255, 0.4),
+        3px 3px 50px 15px rgb(204, 204, 204), -3px -3px 50px 15px rgb(204, 204, 204),
+        3px 3px 25px 5px rgba(77, 77, 77, 0.808), -3px -3px 25px 5px rgb(77, 77, 77);
+}
+
+.windowBar {
+    width: 100%;
+    height: 25px;
+    background-color: rgb(124, 124, 124);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.btn-container {
+    display: flex;
+    align-items: stretch;
+}
+
+.btn-min,
+.btn-max,
+.btn-X {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(73, 73, 73);
+}
+
+.btn-min,
+.btn-max {
+    font-size: 1.2rem;
+}
+
+.btn-min {
+    background-color: rgb(151, 151, 151);
+}
+
+.btn-X {
+    font-size: .9rem;
+    background-color: brown;
 }
