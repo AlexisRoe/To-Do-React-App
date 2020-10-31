@@ -11,6 +11,11 @@ function App() {
 
   const [toDoList, setToDo] = useState(defaultList);
 
+  function handleRemove (todo) {
+    const newList = toDoList.filter((item) => item !== todo);
+    setToDo(newList);
+  }
+
   return (
     <main>
       <InputField
@@ -19,10 +24,11 @@ function App() {
           // hier später ersetzen durch bessere Form!
           let inputValue = document.querySelector("#inputField").value;
           const newList = addToDo(inputValue);
+          inputValue ="";
           setToDo(newList);
         }}
       />
-      {toDoList && <OutputFieldList toDoList={toDoList} />}
+      {toDoList && <OutputFieldList toDoList={toDoList} onRemove={handleRemove}/>}
     </main>
   );
 }
