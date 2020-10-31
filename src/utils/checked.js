@@ -1,12 +1,7 @@
-export default function checkedToDo(todo) {
-  let checkedItems = null;
+import getData from "./getData";
 
-  try {
-    checkedItems = JSON.parse(localStorage.getItem("checked")) || [];
-  } catch (error) {
-    console.error(error);
-    checkedItems = [];
-  }
+export default function checkedToDo(todo) {
+  let checkedItems = getData("checked");
   let updatedItems = null;
   !checkedItems.includes(todo)
     ? (updatedItems = [...checkedItems, todo])

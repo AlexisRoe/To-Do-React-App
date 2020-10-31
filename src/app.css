@@ -5,9 +5,7 @@
     background-color: rgb(41, 41, 41);
     border: 10px solid rgb(124, 124, 124);
     border-top: 0px;
-    box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.4), -1px -1px 1px 0px rgba(255, 255, 255, 0.4),
-        3px 3px 50px 15px rgb(204, 204, 204), -3px -3px 50px 15px rgb(204, 204, 204),
-        3px 3px 25px 5px rgba(77, 77, 77, 0.808), -3px -3px 25px 5px rgb(77, 77, 77);
+    box-shadow: 31px 40px 88px -24px rgba(0,0,0,0.66),10px 10px 32px 0px rgba(0,0,0,0.35);
     padding-bottom: 2rem;
     position: relative;
     overflow: hidden;

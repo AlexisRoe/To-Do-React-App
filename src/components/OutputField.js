@@ -5,17 +5,16 @@ import isChecked from '../utils/isChecked';
 import removeStorage from '../utils/remove';
 
 export default function OutputField({ todo, onRemove }) {
-    const labelStart = () => (isChecked(todo) ? '[X]' : '[ ]');
-    const [label, setLabel] = useState(labelStart);
+    const [label, setLabel] = useState(isChecked(todo));
 
     return (
         <div className='outputContainer'>
-            <input type='checkbox' name='nameToDo' defaultChecked={isChecked(todo)} />
+            <input type='checkbox' name='nameToDo'/>
             <label
                 htmlFor='nameToDo'
                 onClick={() => {
                     checkedInStorage(todo);
-                    setLabel(isChecked(todo) ? '[X]' : '[ ]');
+                    setLabel(isChecked(todo));
                 }}
             >
                 {label}
