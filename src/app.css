@@ -1,6 +1,6 @@
 .main {
     width: 600px;
-    min-height: 500px;
+    height: 500px;
     margin: 0 auto;
     background-color: rgb(41, 41, 41);
     border: 10px solid rgb(124, 124, 124);
@@ -8,6 +8,16 @@
     box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.4), -1px -1px 1px 0px rgba(255, 255, 255, 0.4),
         3px 3px 50px 15px rgb(204, 204, 204), -3px -3px 50px 15px rgb(204, 204, 204),
         3px 3px 25px 5px rgba(77, 77, 77, 0.808), -3px -3px 25px 5px rgb(77, 77, 77);
+    padding-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.bodyContainer {
+    width: 100%;
+    height:100%;
+    padding-bottom: 1rem;
+    overflow-y: auto;
 }
 
 .windowBar {
@@ -47,4 +57,11 @@
 .btn-X {
     font-size: .9rem;
     background-color: brown;
+}
+
+.header {
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
 }

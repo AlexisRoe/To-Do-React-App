@@ -2,6 +2,7 @@
     padding: 0 2rem;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 1rem;
 }
 
 .inputContainer > span {

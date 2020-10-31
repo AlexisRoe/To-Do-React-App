@@ -23,6 +23,7 @@
 body {
     font: 16px 'Nanum Gothic Coding', Arial, sans-serif;
     text-transform: uppercase;
+    letter-spacing: .1rem;
     margin: 2rem;
     background-color: rgb(202, 202, 202);
     color: rgb(241, 239, 239);
@@ -47,6 +48,7 @@ button {
     color: rgb(241, 239, 239);
     font: 16px 'Nanum Gothic Coding', Arial, sans-serif;
     text-transform: uppercase;
+    letter-spacing: .1rem;
     outline: none;
 }
 

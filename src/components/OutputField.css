@@ -5,9 +5,14 @@
 }
 
 .outputContainer > input {
-    margin-right: 1rem;
+    display: none;
 }
 
 .outputContainer > label {
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.outputContainer > span {
     margin-right: auto;
 }
