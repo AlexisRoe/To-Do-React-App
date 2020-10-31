@@ -1,7 +1,8 @@
 .outputContainer {
     margin-top: 1rem;
     padding: 0 2rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: 42px 2rem 1fr auto;
 }
 
 .outputContainer > input {
@@ -10,9 +11,11 @@
 
 .outputContainer > label {
     cursor: pointer;
-    margin-right: 1rem;
+    width: 42px;
+
 }
 
-.outputContainer > span {
-    margin-right: auto;
+.outputIndex{
+    width: 1.5rem;
+    height: 1rem;
 }
