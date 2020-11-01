@@ -15,7 +15,7 @@ function App() {
     const [itemList, setItemList] = useState(defaultList);
     const [buildSwitch, setBuildSwitch] = useState(null);
     const [editValue, setEditValue] = useState(null);
-    const [label, setLabel] = useState([]);
+    const [state, setState] = useState(null);
 
     function handleRemove(todo) {
         const newList = itemList.filter((item) => item !== todo);
@@ -37,30 +37,28 @@ function App() {
 
         if (/^clear/.test(inputValue)) {
             setItemList([]);
-        } else if (/^list todo/.test(inputValue)) {
-            setItemList(getData('todo'));
+        } else if (/^list completed/.test(inputValue)) {
+            const completedList = getData('deleted');
+            setBuildSwitch('completed');
+            setItemList(completedList);
         } else if (/^list/.test(inputValue)) {
             setItemList(getData('todo'));
-        } else if (/^list complete/.test(inputValue)) {
-            const completedList = getData('deleted');
-            setBuildSwitch('complete');
-            setItemList(completedList);
         } else if (/^help/.test(inputValue)) {
             const help = [
                 '$ text              = add new to-do item with value=text',
-                '$ list / list todo  = shows to-do list',
-                '$ list complete     = shows all completed to-do´s',
+                '$ list              = shows to-do list',
+                '$ list completed    = shows all completed to-do´s',
                 '$ filter checked    = shows only checked to-do',
                 '$ filter unchecked  = shows only unchecked to-do',
                 '$ edit number text  = edit existing to-do with text',
                 '$ check number      = check item with #number',
                 '$ uncheck number    = uncheck item with #number',
-                '$ complete number   = delete item with #number',
+                '$ delete number     = delete item with #number',
                 '$ clear             = clear console',
             ];
             setBuildSwitch('help');
             setItemList(help);
-        } else if (/^complete/.test(inputValue)) {
+        } else if (/^delete/.test(inputValue)) {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
                 removeFromStorage(itemList[index]);
@@ -76,11 +74,13 @@ function App() {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
                 addCheck(itemList[index]);
+                setState(index);
             }
         } else if (/^uncheck/.test(inputValue)) {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
                 deleteCheck(itemList[index]);
+                setState(index+1);
             }
         } else if (/^filter checked/.test(inputValue)) {
             setItemList(getData('checked'));
@@ -141,6 +141,7 @@ function App() {
                         <OutputFieldList
                             itemList={itemList}
                             router={buildSwitch}
+                            state={state}
                         />
                     )}
                 </div>

@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OutputField.css';
-import changeStatus from '../utils/checked';
 import isChecked from '../utils/isChecked';
 
-export default function OutputField({ todo, index}) {
+export default function OutputField({ todo, index, state }) {
     const [label, setLabel] = useState(isChecked(todo));
+
+    const textValue = todo.split("?");
+
+    useEffect(() => {
+        setLabel(isChecked(todo));
+    }, [state]);
 
     return (
         <div className='outputContainer'>
-            <input type='checkbox' name='nameToDo' />
-            <label
-                htmlFor='nameToDo'
-                onClick={() => {
-                    changeStatus(todo);
-                    setLabel(isChecked(todo));
-                }}
-            >
-                {label}
-            </label>
-            <span className="outputIndex">#{index + 1}</span>
-            <span className="output">{todo}</span>
+            <label>{label}</label>
+            <span className='outputIndex'>[{index + 1}]</span>
+            <span className='output'>{textValue[0]}</span>
+            <span>{textValue[1]}</span>
         </div>
     );
 }

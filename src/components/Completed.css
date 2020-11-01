@@ -4,7 +4,3 @@
     display: grid;
     grid-template-columns: 42px 3rem 1fr auto;
 }
-
-.completedItem{
-    text-decoration: line-through;
-}
