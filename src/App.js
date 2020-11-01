@@ -37,7 +37,7 @@ function App() {
 
         if (/^clear/.test(inputValue)) {
             setItemList([]);
-        } else if (/^list completed/.test(inputValue)) {
+        } else if (/^list completed/.test(inputValue) || /^list deleted/.test(inputValue)) {
             const completedList = getData('deleted');
             setBuildSwitch('completed');
             setItemList(completedList);
@@ -54,10 +54,16 @@ function App() {
                 '$ check number      = check item with #number',
                 '$ uncheck number    = uncheck item with #number',
                 '$ delete number     = delete item with #number',
+                '$ delete all        = delete all items',
                 '$ clear             = clear console',
             ];
             setBuildSwitch('help');
             setItemList(help);
+        } else if (/^delete all/.test(inputValue)) {
+            itemList.forEach((item) => {
+                removeFromStorage(item);
+            })
+            setItemList([]);
         } else if (/^delete/.test(inputValue)) {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
@@ -91,9 +97,10 @@ function App() {
             setItemList(output);
         } else if (/^tell me a joke/.test(inputValue)) {
             const joke = [
-                'A cement mixer has ­collided with a prison van. Motorists are asked to look out for 16 hardened criminals.',
+                '"A cement mixer has ­collided with a prison van. Motorists are asked to look out for 16 hardened criminals."',
             ];
             setItemList(joke);
+            setBuildSwitch('joke');
         } else {
             setItemList(addToDo(inputValue));
         }
