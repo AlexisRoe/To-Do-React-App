@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './OutputField.css';
 import isChecked from '../utils/isChecked';
 
-export default function OutputField({ todo, index, state }) {
+export default function OutputField({ todo, index, stateLabel }) {
     const [label, setLabel] = useState(isChecked(todo));
 
     const textValue = todo.split("≠");
 
     useEffect(() => {
         setLabel(isChecked(todo));
-    }, [state]);
+    }, [stateLabel]);
 
     return (
         <div className='outputContainer'>

@@ -9,13 +9,14 @@ import getData from './utils/getData';
 import addCheck from './utils/addCheck';
 import deleteCheck from './utils/deleteCheck';
 import removeFromStorage from './utils/remove';
+import makeDate from "./utils/makeDate";
 
 function App() {
     const defaultList = getData('todo');
     const [itemList, setItemList] = useState(defaultList);
     const [buildSwitch, setBuildSwitch] = useState(null);
     const [editValue, setEditValue] = useState(null);
-    const [state, setState] = useState(null);
+    const [stateLabel, setStateLabel] = useState(null);
 
     function handleRemove(todo) {
         const newList = itemList.filter((item) => item !== todo);
@@ -26,7 +27,7 @@ function App() {
         const [value, index] = newToDo;
         document.documentElement.style.setProperty('--editor', 'none');
         const updatedList = [...itemList];
-        updatedList[index] = value;
+        updatedList[index] = `${value}≠${makeDate()}`;
         localStorage.setItem('todo', JSON.stringify(updatedList));
         setItemList(updatedList);
         setEditValue(null);
@@ -35,15 +36,15 @@ function App() {
     function inputAnalyse(inputValue) {
         setBuildSwitch(null);
 
-        if (/^clear/.test(inputValue)) {
+        if (/^clear/i.test(inputValue)) {
             setItemList([]);
-        } else if (/^list completed/.test(inputValue) || /^list deleted/.test(inputValue)) {
+        } else if (/^list completed/i.test(inputValue) || /^list deleted/i.test(inputValue)) {
             const completedList = getData('deleted');
             setBuildSwitch('completed');
             setItemList(completedList);
-        } else if (/^list/.test(inputValue)) {
+        } else if (/^list/i.test(inputValue)) {
             setItemList(getData('todo'));
-        } else if (/^help/.test(inputValue)) {
+        } else if (/^help/i.test(inputValue)) {
             const help = [
                 '$ text              = add new to-do item with value=text',
                 '$ list              = shows to-do list',
@@ -59,43 +60,44 @@ function App() {
             ];
             setBuildSwitch('help');
             setItemList(help);
-        } else if (/^delete all/.test(inputValue)) {
+        } else if (/^delete all/i.test(inputValue)) {
             itemList.forEach((item) => {
                 removeFromStorage(item);
             })
             setItemList([]);
-        } else if (/^delete/.test(inputValue)) {
+        } else if (/^delete/i.test(inputValue)) {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
                 removeFromStorage(itemList[index]);
                 handleRemove(itemList[index]);
             }
-        } else if (/^edit/.test(inputValue)) {
+        } else if (/^edit/i.test(inputValue)) {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
                 document.documentElement.style.setProperty('--editor', 'block');
-                setEditValue([itemList[index], index]);
+                const editText = itemList[index].split("≠")[0];
+                setEditValue([editText, index]);
             }
-        } else if (/^check/.test(inputValue)) {
+        } else if (/^check/i.test(inputValue)) {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
                 addCheck(itemList[index]);
-                setState(index);
+                setStateLabel(index);
             }
         } else if (/^uncheck/.test(inputValue)) {
             const index = inputValue.match(/\d+/) - 1;
             if (index >= 0 && index < itemList.length) {
                 deleteCheck(itemList[index]);
-                setState(index+1);
+                setStateLabel(index+1);
             }
-        } else if (/^filter checked/.test(inputValue)) {
+        } else if (/^filter checked/i.test(inputValue)) {
             setItemList(getData('checked'));
-        } else if (/^filter unchecked/.test(inputValue)) {
+        } else if (/^filter unchecked/i.test(inputValue)) {
             const checkedList = getData('checked');
             const allToDoList = getData('todo');
             const output = allToDoList.filter((todo) => !checkedList.includes(todo));
             setItemList(output);
-        } else if (/^tell me a joke/.test(inputValue)) {
+        } else if (/^tell me a joke/i.test(inputValue)) {
             const joke = [
                 '"A cement mixer has ­collided with a prison van. Motorists are asked to look out for 16 hardened criminals."',
             ];
@@ -148,7 +150,7 @@ function App() {
                         <OutputFieldList
                             itemList={itemList}
                             router={buildSwitch}
-                            state={state}
+                            stateLabel={stateLabel}
                         />
                     )}
                 </div>
