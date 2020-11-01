@@ -3,7 +3,7 @@ import './Completed.css';
 
 export default function Completed({ completedToDo, index }) {
 
-    const todo = completedToDo.split("?");
+    const todo = completedToDo.split("≠");
 
     return (
         <div className='completedContainer'>

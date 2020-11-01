@@ -5,7 +5,7 @@ import isChecked from '../utils/isChecked';
 export default function OutputField({ todo, index, state }) {
     const [label, setLabel] = useState(isChecked(todo));
 
-    const textValue = todo.split("?");
+    const textValue = todo.split("≠");
 
     useEffect(() => {
         setLabel(isChecked(todo));
