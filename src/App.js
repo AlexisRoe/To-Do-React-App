@@ -109,7 +109,7 @@ function App() {
     }
 
     return (
-        <div className='container'>
+        <main className='container'>
             {editValue && (
                 <Editor
                     todo={editValue}
@@ -120,15 +120,15 @@ function App() {
                 />
             )}
 
-            <main className='main'>
-                <div className='windowBar'>
+            <article className='main'>
+                <nav className='windowBar'>
                     <span>Just another stupid To-Do-App</span>
                     <div className='btn-container'>
                         <button className='btn-min'>_</button>
                         <button className='btn-max'>☐</button>
                         <button className='btn-X'>X</button>
                     </div>
-                </div>
+                </nav>
                 <div className='bodyContainer'>
                     <header className='header'>
                         ******************************************************
@@ -154,8 +154,8 @@ function App() {
                         />
                     )}
                 </div>
-            </main>
-        </div>
+            </article>
+        </main>
     );
 }
 

@@ -25,5 +25,5 @@ export default function OutputFieldList({ itemList, router, stateLabel }) {
         }
     }
 
-    return <div className='OutputFieldList'>{output()}</div>;
+    return <section className='OutputFieldList'>{output()}</section>;
 }

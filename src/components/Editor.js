@@ -4,8 +4,8 @@ import './Editor.css';
 export default function Editor({ todo, onSubmit }) {
     const [ value, index ] = todo;
     return (
-        <div className='editor'>
-            <div className='windowBar'>
+        <article className='editor'>
+            <nav className='windowBar'>
                 <span>Editor</span>
                 <button
                     className='btn-X'
@@ -15,12 +15,12 @@ export default function Editor({ todo, onSubmit }) {
                 >
                     X
                 </button>
-            </div>
+            </nav>
             <p>old: $ {value}</p>
             <form className='editorForm' onSubmit={(event) => onSubmit(event, index)}>
                 <span>new: $</span>
                 <input type='text' name='editor' id='editor' autoComplete='off' autoFocus={true}/>
             </form>
-        </div>
+        </article>
     );
 }
