@@ -47,7 +47,7 @@ function App() {
         } else if (/^help/.test(inputValue)) {
             const help = [
                 '$ text              = add new to-do item with value=text',
-                '$ list todo         = shows to-do list',
+                '$ list / list todo  = shows to-do list',
                 '$ list complete     = shows all completed to-do´s',
                 '$ filter checked    = shows only checked to-do',
                 '$ filter unchecked  = shows only unchecked to-do',

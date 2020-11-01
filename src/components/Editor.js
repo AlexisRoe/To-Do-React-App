@@ -19,7 +19,7 @@ export default function Editor({ todo, onSubmit }) {
             <p>old: $ {value}</p>
             <form className='editorForm' onSubmit={(event) => onSubmit(event, index)}>
                 <span>new: $</span>
-                <input type='text' name='editor' id='editor' autoComplete='off'/>
+                <input type='text' name='editor' id='editor' autoComplete='off' autoFocus={true}/>
             </form>
         </div>
     );
