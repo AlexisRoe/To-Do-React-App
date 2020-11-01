@@ -15,6 +15,7 @@ function App() {
     const [itemList, setItemList] = useState(defaultList);
     const [buildSwitch, setBuildSwitch] = useState(null);
     const [editValue, setEditValue] = useState(null);
+    const [label, setLabel] = useState([]);
 
     function handleRemove(todo) {
         const newList = itemList.filter((item) => item !== todo);
@@ -139,7 +140,6 @@ function App() {
                     {itemList && (
                         <OutputFieldList
                             itemList={itemList}
-                            onRemove={handleRemove}
                             router={buildSwitch}
                         />
                     )}
