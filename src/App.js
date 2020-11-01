@@ -24,6 +24,8 @@ function App() {
             setItemList([]);
         } else if (/^list todo/.test(inputValue)) {
             setItemList(getData('todo'));
+        } else if (/^list/.test(inputValue)) {
+            setItemList(getData('todo'));
         } else if (/^list complete/.test(inputValue)) {
             const completedList = getData("deleted")
             setBuildSwitch("complete");
@@ -48,6 +50,13 @@ function App() {
                 removeFromStorage(itemList[index]);
                 handleRemove(itemList[index]);
             }
+        } else if (/^filter checked/.test(inputValue)) {
+            setItemList(getData('checked'));
+        } else if (/^filter unchecked/.test(inputValue)) {
+            const checkedList = getData('checked');
+            const allToDoList = getData("todo");
+            const output = allToDoList.filter((todo) => !checkedList.includes(todo))
+            setItemList(output);
         } else {
             setItemList(addToDo(inputValue));
         }
