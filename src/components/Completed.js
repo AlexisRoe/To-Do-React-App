@@ -7,6 +7,7 @@ export default function Completed({ completedToDo }) {
             <span>[X]</span>
             <span>##</span>
             <span className='completedItem'>{completedToDo}</span>
+            <span>Completed</span>
         </div>
     );
 }

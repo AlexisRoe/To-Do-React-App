@@ -4,7 +4,7 @@ import OutputField from './OutputField';
 import Help from './Help';
 import Completed from "./Completed";
 
-export default function OutputFieldList({ itemList, onRemove, router, label, onClick}) {
+export default function OutputFieldList({ itemList, onRemove, router}) {
     function output() {
         if (router === 'help') {
             const helpList = itemList.map((item) => <Help key={item} helpValue={item} />);
@@ -14,7 +14,7 @@ export default function OutputFieldList({ itemList, onRemove, router, label, onC
             return completedList;
         } else {
             const regularList = itemList.map((item, index) => (
-                <OutputField key={item} todo={item} onRemove={onRemove} index={index} label={label} onClick={onClick}/>
+                <OutputField key={item} todo={item} onRemove={onRemove} index={index} />
             ));
             return regularList;
         }

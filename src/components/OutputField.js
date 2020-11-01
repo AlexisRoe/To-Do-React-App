@@ -21,14 +21,14 @@ export default function OutputField({ todo, onRemove, index}) {
             </label>
             <span className="outputIndex">#{index + 1}</span>
             <span className="output">{todo}</span>
-            <button
+            {/* <button
                 onClick={() => {
                     removeFromStorage(todo);
                     onRemove(todo);
                 }}
             >
                 Completed
-            </button>
+            </button> */}
         </div>
     );
 }
