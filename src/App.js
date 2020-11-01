@@ -5,6 +5,8 @@ import OutputFieldList from './components/OutputFieldList';
 
 import addToDo from './utils/storage';
 import getData from './utils/getData';
+import addCheck from "./utils/addCheck";
+import deleteCheck from "./utils/deleteCheck";
 import removeFromStorage from "./utils/remove";
 
 function App() {
@@ -49,6 +51,16 @@ function App() {
             if (index >= 0 && index < itemList.length){
                 removeFromStorage(itemList[index]);
                 handleRemove(itemList[index]);
+            }
+        } else if (/^check/.test(inputValue)) {
+            const index = inputValue.match(/\d+/) -1;
+            if (index >= 0 && index < itemList.length){
+                addCheck(itemList[index]);
+            }
+        } else if (/^uncheck/.test(inputValue)) {
+            const index = inputValue.match(/\d+/) -1;
+            if (index >= 0 && index < itemList.length){
+                deleteCheck(itemList[index]);
             }
         } else if (/^filter checked/.test(inputValue)) {
             setItemList(getData('checked'));

@@ -4,7 +4,7 @@ import changeStatus from '../utils/checked';
 import isChecked from '../utils/isChecked';
 import removeFromStorage from '../utils/remove';
 
-export default function OutputField({ todo, onRemove, index }) {
+export default function OutputField({ todo, onRemove, index}) {
     const [label, setLabel] = useState(isChecked(todo));
 
     return (
