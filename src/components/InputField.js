@@ -14,9 +14,6 @@ export default function InputField(props) {
         autoFocus={true}
         required={true}
       ></input>
-      {/* <button type="submit" className="inputButton">
-        Submit
-      </button> */}
     </form>
   );
 }

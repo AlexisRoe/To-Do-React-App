@@ -25,5 +25,9 @@ type `help` in the "console" and you get this
     $ uncheck number    = uncheck item with #number
     $ delete number     = delete item with #number
     $ delete all        = delete all items
-    $ clear             = clear console
+    $ clear             = clear consoleto learn
+
+## Disclaimer
+
+The code needs obviously refactoring, especially in storing data in objects, another approach in checking for commands. For more information, critic, questions or help feel free to open new issues. Thank you.
 
