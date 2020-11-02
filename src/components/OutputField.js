@@ -1,34 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OutputField.css';
-import checkedInStorage from '../utils/checked';
 import isChecked from '../utils/isChecked';
-import removeStorage from '../utils/remove';
 
-export default function OutputField({ todo, onRemove }) {
-    const labelStart = () => (isChecked(todo) ? '[X]' : '[ ]');
-    const [label, setLabel] = useState(labelStart);
+export default function OutputField({ todo, index, stateLabel }) {
+    const [label, setLabel] = useState(isChecked(todo));
+
+    const textValue = todo.split("≠");
+
+    useEffect(() => {
+        setLabel(isChecked(todo));
+    }, [stateLabel]);
 
     return (
         <div className='outputContainer'>
-            <input type='checkbox' name='nameToDo' defaultChecked={isChecked(todo)} />
-            <label
-                htmlFor='nameToDo'
-                onClick={() => {
-                    checkedInStorage(todo);
-                    setLabel(isChecked(todo) ? '[X]' : '[ ]');
-                }}
-            >
-                {label}
-            </label>
-            <span>{todo}</span>
-            <button
-                onClick={() => {
-                    removeStorage(todo);
-                    onRemove(todo);
-                }}
-            >
-                Completed
-            </button>
+            <label>{label}</label>
+            <span className='outputIndex'>[{index + 1}]</span>
+            <span className='output'>{textValue[0]}</span>
+            <span>{textValue[1]}</span>
         </div>
     );
 }

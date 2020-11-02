@@ -1,18 +1,10 @@
-export default function removeToDo(todo) {
-    let checkedItems = null;
-    let toDos = null;
-    let deletedToDos = null;
+import getData from "./getData";
 
-    try {
-        checkedItems = JSON.parse(localStorage.getItem('checked')) || [];
-        toDos = JSON.parse(localStorage.getItem('todo')) || [];
-        deletedToDos = JSON.parse(localStorage.getItem('deleted')) || [];
-    } catch (error) {
-        console.error(error);
-        checkedItems = [];
-        toDos = [];
-        deletedToDos = [];
-    }
+export default function removeToDo(todo) {
+    let checkedItems = getData("checked");
+    let toDos = getData("todo");
+    let deletedToDos = getData("deleted");
+
 
     let updatedChecked = null;
     checkedItems.includes(todo) && (updatedChecked = checkedItems.filter((item) => item !== todo));

@@ -1,0 +1,36 @@
+:root{
+    --editor: none;
+}
+
+.editor {
+    width: 450px;
+    height: 150px;
+    position: absolute;
+    Left: 350px;
+    Top: 150px;
+    background-color: rgb(41, 41, 41);
+    border: 10px solid rgb(124, 124, 124);
+    border-top: 0px;
+    z-index: 1;
+    overflow: hidden;
+    display: var(--editor);
+}
+
+.editor p {
+    margin: 1rem 1rem;
+}
+
+.editorForm {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 1rem;
+}
+
+.editorForm > span {
+    width: 4.2rem;
+}
+
+.editorForm > input {
+    flex-grow: 1;
+    height: 100%;
+};

@@ -1,17 +1,14 @@
-export default function addToDo (todo) {
+import getData from './getData';
+import makeDate from "./makeDate";
 
-    let existingToDo = null;
+export default function addToDo(todo) {
+    let existingToDo = getData('todo');
 
-    try {
-        existingToDo = JSON.parse(localStorage.getItem("todo")) || [];
-    } catch (error){
-        console.error(error);
-        existingToDo = [];
-    } 
+    const mixedData = `${todo}≠${makeDate()}`;
 
     if (!existingToDo.includes(todo)) {
-        const newToDo =  [...existingToDo, todo];
-        localStorage.setItem("todo", JSON.stringify(newToDo));
+        const newToDo = [...existingToDo, mixedData];
+        localStorage.setItem('todo', JSON.stringify(newToDo));
         return newToDo;
     }
 

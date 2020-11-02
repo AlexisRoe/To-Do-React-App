@@ -1,0 +1,6 @@
+.completedContainer {
+    margin-top: 1rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 42px 3rem 1fr auto;
+}
